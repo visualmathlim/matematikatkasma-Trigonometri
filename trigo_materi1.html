@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modul 1 Trigonometri - VisualMath.Lim</title>
+<style>
+:root{--n:#022050;--c:#00d6d8;--y:#ffd300;--bg:#f3f8fc;--tx:#0d1b33;--card:#fff;--g:#12a150;--b:#1f6feb;--r:#d92d20}
+@media(prefers-color-scheme:dark){:root{--bg:#0a1730;--tx:#e8f0ff;--card:#10224a}}
+*{box-sizing:border-box}html{scroll-padding-top:90px}
+body{margin:0;font:16px/1.65 "Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+header{position:sticky;top:0;z-index:9;background:var(--n);color:#fff;border-bottom:4px solid var(--y);padding:8px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header img{height:48px;width:48px;border-radius:50%}
+.ti{flex:1;min-width:200px;font-weight:700;line-height:1.25}.ti small{display:block;font-weight:400;color:var(--c)}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:20px;font-size:14px}
+nav a:hover{background:var(--c);color:var(--n)}nav a.home{background:var(--y);color:var(--n);font-weight:700}
+#sk{background:var(--c);color:var(--n);font-weight:700;border-radius:20px;padding:4px 12px;font-size:14px}
+main{max-width:860px;margin:0 auto;padding:16px}
+h1{color:var(--n);font-size:1.7rem;margin:.3em 0}h2{border-left:6px solid var(--y);padding-left:10px;color:var(--n);margin-top:2em}
+@media(prefers-color-scheme:dark){h1,h2{color:var(--c)}}
+.hero{background:var(--n);color:#fff;border-radius:14px;padding:20px;border-bottom:6px solid var(--y)}.hero h1{color:var(--y)}
+.box{background:var(--card);border-radius:12px;padding:12px 16px;margin:12px 0;border:1px solid #c5d6ea}
+.big{border-left:6px solid var(--c)}.warn{border-left:6px solid var(--r)}
+table{border-collapse:collapse;width:100%;background:var(--card)}td,th{border:1px solid #b9cde4;padding:6px 8px;text-align:left}th{background:var(--n);color:#fff}
+.sc{overflow-x:auto}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.92em;line-height:1.15}
+.fr i{font-style:normal;border-bottom:1.5px solid currentColor;padding:0 3px}.fr b{font-weight:inherit;padding:0 3px}
+.ov{border-top:1.5px solid currentColor}
+.mi{color:var(--r);font-weight:700}.de{color:var(--g);font-weight:700}.sa{color:var(--b);font-weight:700}
+svg{max-width:100%;height:auto;display:block;margin:8px auto;background:#fff;border-radius:10px;border:1px solid #c5d6ea}
+.q{background:var(--card);border:1px solid #b9cde4;border-radius:12px;padding:14px;margin:14px 0}
+.opts button,.bs button{display:block;width:100%;text-align:left;margin:6px 0;padding:9px 12px;border:2px solid #b9cde4;border-radius:10px;background:transparent;color:inherit;font:inherit;cursor:pointer}
+.opts button:hover{border-color:var(--c)}.opts .sel{border-color:var(--b);background:#1f6feb22}
+.opts .ok,.bs .ok{border-color:var(--g)!important;background:#12a15026!important}.opts .no{border-color:var(--r)!important;background:#d92d2022!important}
+.bs{display:flex;gap:6px;align-items:center;margin:6px 0}.bs span{flex:1}.bs button{width:auto;margin:0;padding:5px 12px}.bs .sel{background:var(--c);color:var(--n);border-color:var(--c)}
+.chk{background:var(--n);color:#fff;border:0;border-radius:20px;padding:8px 18px;font:inherit;font-weight:700;cursor:pointer}.chk:hover{background:var(--c);color:var(--n)}
+.ex{margin-top:10px}.ex .v{font-weight:700;padding:8px 12px;border-radius:8px;background:var(--y);color:var(--n)}
+.cc{background:#ffd30033;border-left:6px solid var(--y);padding:8px 12px;border-radius:8px;margin:8px 0}
+.cl{border-left:6px solid var(--c);padding:6px 12px;border-radius:8px;background:#00d6d814}
+.cl ol{margin:4px 0;padding-left:22px}.cl li{margin:4px 0}
+footer{text-align:center;padding:20px;background:var(--n);color:#fff;margin-top:30px}
+@media(max-width:560px){body{font-size:15px}.ti{font-size:14px}}
+</style></head><body>
+<header>
+<img src="logo.png" alt="Logo VisualMath.Lim" onerror="this.style.display='none'">
+<div class="ti">VisualMath.Lim - TKA Matematika Wajib SMA<small>Modul 1 · Trigonometri</small></div>
+<nav><a class="home" href="index.html">Home</a><a href="#A">Sisi</a><a href="#B">Perbandingan</a><a href="#cth">Contoh</a><a href="#lat">Latihan</a><a href="#tka">Soal TKA</a></nav>
+<span id="sk">Skor 0/0</span>
+</header>
+<main>
+<div class="hero"><h1>Anatomi Segitiga Siku-siku</h1>
+<p>Pemahaman dasar perbandingan trigonometri. Persiapan TKA Matematika SMA Kelas 12 · Elemen: Trigonometri.</p>
+<p><b>SEE • THINK • SOLVE</b>. Modul ini dimulai dari nol: <b>menamai sisi segitiga</b>. Hampir semua kesalahan trigonometri berawal dari salah menamai sisi, bukan salah menghitung.</p></div>
+
+<h2>Peta Kompetensi</h2>
+<div class="sc"><table><tr><th>Level</th><th>Proses berpikir</th><th>Wujud soal</th></tr>
+<tr><td><b>L1</b> Pengetahuan</td><td>Menghitung, mengidentifikasi</td><td>Menamai sisi; menghitung sin, cos, tan, cosec, sec, cot</td></tr>
+<tr><td><b>L2</b> Aplikasi</td><td>Memodelkan, menerapkan</td><td>Pythagoras; mencari perbandingan lain; soal cerita (tangga)</td></tr>
+<tr><td><b>L3</b> Penalaran</td><td>Menganalisis, menjustifikasi</td><td>Aljabar + segitiga; benar-salah; hubungan sin A = cos C</td></tr></table></div>
+<div class="box big"><b>Setelah Modul 1, kamu bisa:</b><ul>
+<li>Menandai sudut acuan, lalu menamai sisi <b>miring, depan, samping</b>.</li>
+<li>Menulis sin, cos, tan dengan <b>SINDEMI, COSAMI, TANDESA</b>.</li>
+<li>Menulis cosec, sec, cot sebagai kebalikannya.</li>
+<li>Mencari sisi yang hilang (Pythagoras) dan perbandingan lain dari satu nilai.</li></ul></div>
+
+<h2>Cek Prasyarat (3 menit)</h2><div id="pra"></div>
+
+<h2 id="A">Bagian A. Mengenal Tiga Sisi</h2>
+<div class="box big"><b>BIG IDEA</b> Tugas pertama selalu sama: <b>tentukan sudut yang ditinjau (θ)</b>, baru beri nama tiga sisi. Salah menamai sisi berarti salah seluruh jawaban.</div>
+<h3>A.1 Tiga nama sisi</h3>
+<p>Segitiga siku-siku punya satu sudut 90° (kotak kecil). Pilih satu sudut lancip sebagai <b>sudut acuan θ</b>.</p>
+<div id="g1"></div>
+<ul><li><span class="mi">Sisi miring</span>: berhadapan dengan sudut siku-siku, selalu <b>terpanjang</b>.</li>
+<li><span class="de">Sisi depan</span>: <b>berhadapan langsung</b> dengan θ.</li>
+<li><span class="sa">Sisi samping</span>: <b>menempel</b> pada θ, selain sisi miring.</li></ul>
+<h3>A.2 Tiga langkah menamai sisi</h3>
+<div class="sc"><table><tr><th>Langkah</th><th>Yang dilakukan</th></tr>
+<tr><td>1</td><td>Cari dan lingkari <b>sudut θ</b> yang diminta soal (misal "sudut A").</td></tr>
+<tr><td>2</td><td>Temukan kotak siku-siku. Sisi di hadapannya = <b>MIRING</b>.</td></tr>
+<tr><td>3</td><td>Sisi di hadapan θ = <b>DEPAN</b>. Sisa satu sisi = <b>SAMPING</b>.</td></tr></table></div>
+<h3>A.3 Sudut acuan berpindah, nama sisi ikut berpindah</h3>
+<div id="g2"></div>
+<div class="box warn"><b>HATI-HATI</b> Sisi miring tidak pernah berubah, tetapi <b>depan dan samping bertukar</b>. Sisi AB adalah <i>samping</i> untuk sudut A, namun menjadi <i>depan</i> untuk sudut C. Karena itu soal selalu menyebut sudutnya: "sin A", bukan sekadar "sin".</div>
+<h3>Latihan Kilat A</h3><div id="kil"></div>
+
+<h2 id="B">Bagian B. Enam Perbandingan Trigonometri</h2>
+<div class="box big"><b>BIG IDEA</b> Perbandingan trigonometri adalah <b>pecahan dari dua sisi</b>, dihitung terhadap θ. Nilainya hanya bergantung pada besar sudut, bukan besar segitiga: segitiga 3-4-5 dan 6-8-10 memberi nilai sama.</div>
+<h3>B.1 Tiga perbandingan pokok</h3>
+<div class="sc"><table><tr><th>Jembatan keledai</th><th>Artinya</th></tr>
+<tr><td><b>SIN-DE-MI</b></td><td>sin θ = <span class="fr"><i>depan</i><b>miring</b></span></td></tr>
+<tr><td><b>COS-SA-MI</b></td><td>cos θ = <span class="fr"><i>samping</i><b>miring</b></span></td></tr>
+<tr><td><b>TAN-DE-SA</b></td><td>tan θ = <span class="fr"><i>depan</i><b>samping</b></span></td></tr></table></div>
+<p>Tiga suku kata = <b>nama, atas (pembilang), bawah (penyebut)</b>. SIN dan COS selalu dibagi <b>MI</b>ring. TAN dibagi <b>SA</b>mping.</p>
+<h3>B.2 Tiga perbandingan kebalikan</h3>
+<div class="sc"><table><tr><th>Nama</th><th>Kebalikan dari</th><th>Rumus sisi</th><th>Jembatan</th></tr>
+<tr><td><b>cosec θ</b></td><td>sin θ</td><td><span class="fr"><i>miring</i><b>depan</b></span></td><td>MI-DE</td></tr>
+<tr><td><b>sec θ</b></td><td>cos θ</td><td><span class="fr"><i>miring</i><b>samping</b></span></td><td>MI-SA</td></tr>
+<tr><td><b>cot θ</b></td><td>tan θ</td><td><span class="fr"><i>samping</i><b>depan</b></span></td><td>SA-DE</td></tr></table></div>
+<div class="box warn"><b>HATI-HATI</b> cosec pasangannya <b>sin</b>, bukan cos. Ingat silang: <b>sin↔cosec, cos↔sec, tan↔cot</b>. Cara aman: tulis sin, cos, tan dulu, lalu <b>balik pecahannya</b>.</div>
+<h3>B.3 Fakta penting</h3>
+<ul><li>Miring terpanjang, jadi <b>sin θ &lt; 1</b> dan <b>cos θ &lt; 1</b> (sudut lancip).</li>
+<li>Kebalikannya: <b>cosec θ &gt; 1</b> dan <b>sec θ &gt; 1</b>.</li>
+<li><b>tan θ dan cot θ</b> bisa kurang atau lebih dari 1.</li></ul>
+<div class="box big"><b>THINK</b> Triple Pythagoras: <b>3-4-5, 5-12-13, 8-15-17, 7-24-25</b> dan kelipatannya (6-8-10, 9-12-15, ...). Angka terbesar selalu <b>sisi miring</b>.</div>
+
+<h2 id="cth">Contoh Soal Berpandu</h2>
+<p>Pilih jawabanmu dulu, pembahasan muncul setelahnya.</p><div id="cth-l"></div>
+
+<h2>Bank Kesalahan Umum</h2>
+<div class="sc"><table><tr><th>Kesalahan</th><th>Mengapa salah</th><th>Yang benar</th></tr>
+<tr><td>Menukar depan dan samping</td><td>θ tidak ditandai</td><td>Lingkari θ dulu</td></tr>
+<tr><td>Kebalikan sin dianggap cos</td><td>cos itu perbandingan lain</td><td>cosec θ = 1 ÷ sin θ</td></tr>
+<tr><td>Sisi ketiga: 13 − 5 = 8</td><td>Pythagoras memakai <b>kuadrat</b></td><td>√[13² − 5²] = √[144] = 12</td></tr>
+<tr><td>sin θ = <span class="fr"><i>5</i><b>3</b></span></td><td>Miring terpanjang, sin tidak mungkin &gt; 1</td><td>Miring harus di penyebut</td></tr></table></div>
+
+<h2 id="lat">Latihan Bertingkat</h2>
+<p>Level 1 (soal 1-4), Level 2 (5-7), Level 3 (8-10). Gambar segitiga bantu di buku.</p><div id="lat-l"></div>
+
+<h2 id="tka">Bank Prediksi Soal TKA</h2>
+<p>Bentuk soal TKA: pilihan ganda, pilihan ganda kompleks (soal 3), dan benar-salah (soal 8).</p><div id="tka-l"></div>
+
+<h2>Lembar Ringkas (Master Check)</h2>
+<div class="box big"><b>Urutan kerja:</b> (1) gambar segitiga, (2) lingkari θ, (3) tandai miring, depan, samping, (4) tulis SINDEMI, COSAMI, TANDESA, (5) balik pecahan untuk cosec, sec, cot, (6) cek: sin dan cos tidak lebih dari 1.</div>
+<div class="sc"><table><tr><th></th><th>Pokok</th><th>Kebalikan</th></tr>
+<tr><td>sin θ</td><td>depan ÷ miring</td><td>cosec θ = miring ÷ depan</td></tr>
+<tr><td>cos θ</td><td>samping ÷ miring</td><td>sec θ = miring ÷ samping</td></tr>
+<tr><td>tan θ</td><td>depan ÷ samping</td><td>cot θ = samping ÷ depan</td></tr></table></div>
+<div class="box">☐ Saya menandai θ sebelum menamai sisi. ☐ Saya tahu depan dan samping bertukar saat θ berpindah. ☐ Saya hafal SINDEMI, COSAMI, TANDESA dan pasangan kebalikannya. ☐ Saya hafal triple 3-4-5, 5-12-13, 8-15-17, 7-24-25. ☐ Saya bisa mencari perbandingan lain dari satu nilai.</div>
+<div class="box big"><b>Berikutnya, Modul 2:</b> nilai sudut istimewa (30°, 45°, 60°) dan tanda sin, cos, tan pada Kuadran I sampai IV.</div>
+</main>
+<footer>VisualMath.Lim · Modul 1 TKA Trigonometri · <a href="index.html" style="color:var(--y)">Kembali ke Home</a></footer>
+<script>
+function m(s){return s.replace(/\{([^{}\/]+)\/([^{}]+)\}/g,'<span class="fr"><i>$1</i><b>$2</b></span>').replace(/√\[([^\]]+)\]/g,'√<span class="ov">$1</span>')}
+/* Gambar segitiga: R=sudut siku, X=kanan, Y=atas; th='X'|'Y'|null; t=[alas,tinggi,miring] */
+function tri(n,th,t){var c1='#022050',c2='#022050',c3='#d92d20',b='#022050',h='#022050';
+if(th=='X'){b='#1f6feb';h='#12a150'}if(th=='Y'){b='#12a150';h='#1f6feb'}
+var s='<svg viewBox="-60 5 400 190" role="img"><polygon points="50,140 230,140 50,40" fill="#e6fbfb" stroke="#022050" stroke-width="2"/>'
++'<line x1="50" y1="140" x2="230" y2="140" stroke="'+b+'" stroke-width="5"/><line x1="50" y1="140" x2="50" y2="40" stroke="'+h+'" stroke-width="5"/><line x1="50" y1="40" x2="230" y2="140" stroke="'+(th?c3:'#022050')+'" stroke-width="5"/>'
++'<path d="M50 125H65V140" fill="none" stroke="#022050"/>'
++'<g font-size="14" fill="#022050" font-family="sans-serif" font-weight="700"><text x="30" y="156">'+n[0]+'</text><text x="236" y="156">'+n[1]+'</text><text x="36" y="36">'+n[2]+'</text>'
++'<text x="140" y="168" text-anchor="middle" fill="'+b+'">'+t[0]+'</text><text x="40" y="95" text-anchor="end" fill="'+h+'">'+t[1]+'</text><text x="168" y="72" text-anchor="middle" fill="#d92d20">'+t[2]+'</text>';
+if(th=='X')s+='<path d="M205 140A25 25 0 0 1 208 128" fill="none" stroke="#022050" stroke-width="2"/><text x="186" y="132" fill="#c2410c">θ</text>';
+if(th=='Y')s+='<path d="M50 65A25 25 0 0 0 72 52" fill="none" stroke="#022050" stroke-width="2"/><text x="60" y="84" fill="#c2410c">θ</text>';
+return s+'</g></svg>'}
+var T=function(a,b,c,d,e,f,g){return tri([a,b,c],d,[e,f,g])};
+document.getElementById('g1').innerHTML=T('B','A','C','X','samping','depan','miring');
+document.getElementById('g2').innerHTML='<p><b>Gambar 2a</b> (θ di A)</p>'+T('B','A','C','X','AB: samping','BC: depan','AC: miring')+'<p><b>Gambar 2b</b> (θ di C): depan dan samping bertukar</p>'+T('B','A','C','Y','AB: depan','BC: samping','AC: miring');
+/* Bank soal. t: undefined=PG, 'm'=pilihan ganda kompleks, 'b'=benar-salah. l: langkah dipisah | */
+var D={
+pra:[
+{q:"<b>P1.</b> Sisi siku-siku 6 dan 8. Berapa panjang sisi miringnya?",o:"10;12;14;48",a:0,c:"Triple 3-4-5 dikali 2 → 6-8-10. Miring = 10.",l:"Rumus Pythagoras: miring² = alas² + tinggi²|miring² = 6² + 8² = 36 + 64 = 100|miring = √[100] = 10"},
+{q:"<b>P2.</b> Sisi miring 13 dan satu sisi siku-siku 5. Berapa sisi siku-siku yang lain?",o:"8;12;18;√[194]",a:1,c:"Triple 5-12-13. Sisi lainnya 12.",l:"Sisi siku-siku² = miring² − sisi lain²|= 13² − 5² = 169 − 25 = 144|sisi = √[144] = 12"},
+{q:"<b>P3.</b> Sederhanakan {6/10} dan {12/16}.",o:"{3/5} dan {3/4};{3/5} dan {4/3};{5/3} dan {3/4};{3/10} dan {3/16}",a:0,c:"Bagi atas dan bawah dengan angka yang sama (6/10 ÷2, 12/16 ÷4).",l:"{6/10}: bagi atas dan bawah dengan 2 → {3/5}|{12/16}: bagi atas dan bawah dengan 4 → {3/4}"}],
+kil:[
+{q:"<b>A.1</b> Pada segitiga PQR siku-siku di Q, terhadap sudut <b>P</b>, sisi miring, depan, dan samping berturut-turut adalah ...",f:T('Q','P','R','X','PQ = 12','QR = 5','PR = 13'),o:"PR, QR, PQ;PR, PQ, QR;PQ, QR, PR;QR, PR, PQ",a:0,c:"Miring = di hadapan kotak siku (PR). Depan P = di seberang P (QR).",l:"Siku-siku di Q → sisi di hadapan Q adalah <b>miring = PR</b>|Sisi di seberang P adalah <b>depan = QR</b>|Sisa satu sisi: <b>samping = PQ</b>"},
+{q:"<b>A.2</b> Pada segitiga yang sama, terhadap sudut <b>R</b>, sisi miring, depan, dan samping berturut-turut adalah ...",f:T('Q','P','R','Y','PQ = 12','QR = 5','PR = 13'),o:"PR, QR, PQ;PR, PQ, QR;PQ, QR, PR;QR, PR, PQ",a:1,c:"Miring tetap PR. Depan R = PQ, samping R = QR (bertukar dari sudut P).",l:"Miring tetap <b>PR</b> (di hadapan Q)|Sisi di seberang R adalah <b>depan = PQ</b>|Sisa: <b>samping = QR</b>. Perhatikan: depan dan samping bertukar dibanding sudut P"}],
+cth:[
+{q:"<b>Contoh 1.</b> Segitiga siku-siku bersisi 5, 12, 13. Sudut θ berhadapan dengan sisi 5. Nilai sin θ, cos θ, tan θ berturut-turut ...",f:T('B','A','C','X','samping = 12','depan = 5','miring = 13'),o:"{5/13}, {12/13}, {5/12};{12/13}, {5/13}, {12/5};{5/13}, {5/12}, {12/13};{13/5}, {13/12}, {12/5}",a:0,c:"DE = 5, SA = 12, MI = 13. SIN-DE-MI = {5/13}, COS-SA-MI = {12/13}, TAN-DE-SA = {5/12}.",l:"Beri nama sisi: depan = 5 (di hadapan θ), samping = 12, miring = 13 (terpanjang)|sin θ = depan ÷ miring = {5/13}|cos θ = samping ÷ miring = {12/13}|tan θ = depan ÷ samping = {5/12}|Kebalikannya tinggal dibalik: cosec θ = {13/5}, sec θ = {13/12}, cot θ = {12/5}"},
+{q:"<b>Contoh 2.</b> Sisi miring 17 dan sisi siku-siku 8 berhadapan dengan θ. Nilai sin θ, cos θ, tan θ berturut-turut ...",o:"{8/17}, {15/17}, {8/15};{8/17}, {15/17}, {15/8};{15/17}, {8/17}, {15/8};{8/15}, {8/17}, {17/15}",a:0,c:"Kenali triple 8-15-17 → samping = 15.",l:"Sisi samping belum diketahui, cari dengan Pythagoras|samping² = 17² − 8² = 289 − 64 = 225|samping = √[225] = 15|Terhadap θ: DE = 8, SA = 15, MI = 17|sin θ = {8/17}, cos θ = {15/17}, tan θ = {8/15}"},
+{q:"<b>Contoh 3.</b> Segitiga ABC siku-siku di B, AB = 4, BC = 3, AC = 5. Nilai sin C dan cos A berturut-turut ...",f:T('B','A','C','Y','AB = 4','BC = 3','AC = 5'),o:"{3/5} dan {3/5};{4/5} dan {4/5};{4/5} dan {3/5};{3/5} dan {4/5}",a:1,c:"Terhadap C, depan = AB = 4 → sin C = {4/5}. Terhadap A, samping = AB = 4 → cos A = {4/5}.",l:"Untuk sudut C: depan = AB = 4, samping = BC = 3, miring = 5|sin C = {4/5}|Untuk sudut A: depan = BC = 3, samping = AB = 4, miring = 5|cos A = {4/5}|Pengamatan: sin C = cos A, begitu juga sin A = cos C = {3/5}. Sisi depan C adalah sisi samping A. Dipakai lagi di Modul 2 dan 3."},
+{q:"<b>Contoh 4.</b> θ lancip dan cos θ = {12/13}. Nilai sin θ, tan θ, cosec θ berturut-turut ...",o:"{5/13}, {5/12}, {13/5};{5/13}, {12/5}, {13/5};{13/5}, {5/12}, {5/13};{5/12}, {5/13}, {13/5}",a:0,c:"COSAMI → SA = 12, MI = 13. Triple 5-12-13 → DE = 5.",l:"cos θ = samping ÷ miring = {12/13} → samping = 12, miring = 13|depan² = 13² − 12² = 169 − 144 = 25 → depan = 5|sin θ = {5/13}|tan θ = {5/12}|cosec θ = kebalikan sin θ = {13/5}"}],
+lat:[
+{q:"<b>1. (L1)</b> Pada segitiga PQR siku-siku di Q (PQ = 12, QR = 5, PR = 13), nilai sin P, cos P, tan P berturut-turut ...",f:T('Q','P','R','X','PQ = 12','QR = 5','PR = 13'),o:"{5/13}, {12/13}, {5/12};{12/13}, {5/13}, {12/5};{5/13}, {5/12}, {12/13};{13/5}, {13/12}, {12/5}",a:0,c:"Depan P = QR = 5, samping P = PQ = 12.",l:"Terhadap P: depan = QR = 5, samping = PQ = 12, miring = 13|sin P = {5/13}, cos P = {12/13}, tan P = {5/12}"},
+{q:"<b>2. (L1)</b> Pada segitiga yang sama, nilai sin R, cos R, tan R berturut-turut ...",f:T('Q','P','R','Y','PQ = 12','QR = 5','PR = 13'),o:"{5/13}, {12/13}, {5/12};{12/13}, {5/13}, {12/5};{12/13}, {12/5}, {5/13};{13/12}, {13/5}, {5/12}",a:1,c:"Depan R = PQ = 12, samping R = QR = 5 (bertukar dari P).",l:"Terhadap R: depan = PQ = 12, samping = QR = 5, miring = 13|sin R = {12/13}, cos R = {5/13}, tan R = {12/5}"},
+{q:"<b>3. (L1)</b> Depan = 15, samping = 8, miring = 17. Nilai cosec θ, sec θ, cot θ berturut-turut ...",o:"{17/15}, {17/8}, {8/15};{15/17}, {8/17}, {15/8};{17/8}, {17/15}, {15/8};{17/15}, {15/8}, {8/15}",a:0,c:"cosec = MI-DE, sec = MI-SA, cot = SA-DE.",l:"cosec θ = miring ÷ depan = {17/15}|sec θ = miring ÷ samping = {17/8}|cot θ = samping ÷ depan = {8/15}"},
+{q:"<b>4. (L1)</b> Sisi miring 10 dan sisi 6 berhadapan dengan θ. Nilai sin θ, cos θ, tan θ berturut-turut ...",o:"{3/5}, {4/5}, {3/4};{4/5}, {3/5}, {4/3};{3/5}, {3/4}, {4/5};{3/4}, {4/5}, {3/5}",a:0,c:"Triple 6-8-10 → samping = 8.",l:"samping² = 10² − 6² = 100 − 36 = 64 → samping = 8|sin θ = {6/10} = {3/5}|cos θ = {8/10} = {4/5}|tan θ = {6/8} = {3/4}"},
+{q:"<b>5. (L2)</b> θ lancip, cos θ = {4/5}. Nilai sin θ, tan θ, cosec θ berturut-turut ...",o:"{3/5}, {3/4}, {5/3};{3/5}, {4/3}, {5/4};{4/5}, {3/4}, {5/3};{3/4}, {3/5}, {5/3}",a:0,c:"SA = 4, MI = 5 → triple 3-4-5, DE = 3.",l:"cos θ = samping ÷ miring → samping = 4, miring = 5|depan² = 5² − 4² = 9 → depan = 3|sin θ = {3/5}, tan θ = {3/4}, cosec θ = {5/3}"},
+{q:"<b>6. (L2)</b> θ lancip, tan θ = {12/5}. Nilai sin θ dan sec θ berturut-turut ...",o:"{12/13} dan {13/5};{5/13} dan {13/12};{12/13} dan {13/12};{13/12} dan {13/5}",a:0,c:"DE = 12, SA = 5 → triple 5-12-13, MI = 13.",l:"tan θ = depan ÷ samping → depan = 12, samping = 5|miring² = 12² + 5² = 169 → miring = 13|sin θ = {12/13}|sec θ = miring ÷ samping = {13/5}"},
+{q:"<b>7. (L2)</b> Tangga 10 m bersandar pada tembok. Ujung bawah tangga 6 m dari tembok. Tinggi ujung atas tangga, cos θ, dan tan θ (θ = sudut tangga dengan tanah) berturut-turut ...",f:T('','','','X','6 m','tinggi','tangga 10 m'),o:"8 m; {3/5}; {4/3};8 m; {4/5}; {3/4};6 m; {3/5}; {4/3};8 m; {3/5}; {3/4}",a:0,c:"Triple 6-8-10 → tinggi 8 m.",l:"Model: miring = tangga = 10, samping θ = 6|tinggi² = 10² − 6² = 64 → tinggi = 8 m|cos θ = samping ÷ miring = {6/10} = {3/5}|tan θ = depan ÷ samping = {8/6} = {4/3}"},
+{q:"<b>8. (L3)</b> Segitiga ABC siku-siku di B dengan AB = x, BC = x + 1, AC = x + 2. Nilai x dan tan A berturut-turut ...",o:"3 dan {4/3};3 dan {3/4};5 dan {12/5};−1 dan 0",a:0,c:"Pola sisi berurutan x, x+1, x+2 → triple 3-4-5.",l:"Pythagoras: x² + (x + 1)² = (x + 2)²|2x² + 2x + 1 = x² + 4x + 4|x² − 2x − 3 = 0 → (x − 3)(x + 1) = 0|Panjang harus positif → x = 3, sisinya 3-4-5|tan A = depan ÷ samping = BC ÷ AB = {4/3}"},
+{q:"<b>9. (L3)</b> Adi berkata, \"Ada segitiga siku-siku dengan sin θ = {5/3}.\" Tanggapan yang benar ...",o:"Setuju, karena {5/3} adalah pecahan;Tidak setuju, sebab depan (5) lebih panjang dari miring (3), padahal miring terpanjang;Setuju, karena 5² = 3² + 4²;Tidak setuju, sebab sin θ harus bilangan bulat",a:1,c:"sin θ = depan ÷ miring harus &lt; 1.",l:"sin θ = depan ÷ miring, jadi depan = 5 dan miring = 3|Sisi miring selalu terpanjang, padahal 5 &gt; 3|Maka tidak mungkin ada. sin θ selalu kurang dari 1"},
+{q:"<b>10. (L3)</b> Segitiga ABC siku-siku di C. Pernyataan yang benar ...",o:"sin A = cos B dan tan A × tan B = 1;sin A = cos B dan tan A × tan B = 0;sin A = sin B dan tan A × tan B = 1",a:0,c:"Depan A = samping B = BC. Maka sin A = cos B.",l:"Miring = AB. Depan A = BC → sin A = {BC/AB}|Samping B = BC (menempel B) → cos B = {BC/AB}. Jadi sin A = cos B|tan A = {BC/AC}, tan B = {AC/BC}|Hasil kali = 1"}],
+tka:[
+{q:"<b>Soal 1.</b> [L1] Segitiga ABC siku-siku di C, AC = 24 cm, BC = 7 cm, AB = 25 cm. Nilai sin A + cos A adalah ...",f:T('C','A','B','X','AC = 24','BC = 7','AB = 25'),o:"{7/25};{24/25};{31/25};{17/25};1",a:2,c:"DE = 7, SA = 24, MI = 25 → {7/25} + {24/25} = {31/25}.",l:"Siku-siku di C → miring = AB = 25|Terhadap A: depan = BC = 7, samping = AC = 24|sin A = {7/25}, cos A = {24/25}|Jumlahkan (penyebut sama): {7/25} + {24/25} = {31/25}|Jebakan: opsi D berasal dari 24 − 7 padahal pecahan dijumlahkan"},
+{q:"<b>Soal 2.</b> [L1] Segitiga PQR siku-siku di Q, PQ = 8, QR = 15, PR = 17. Nilai cosec R adalah ...",f:T('Q','R','P','X','QR = 15','PQ = 8','PR = 17'),o:"{8/17};{15/17};{17/8};{17/15};{15/8}",a:2,c:"Depan R = 8, miring = 17. cosec = MI-DE = {17/8}.",l:"Terhadap R: depan = PQ = 8, samping = QR = 15, miring = 17|sin R = {8/17}|cosec R = 1 ÷ sin R = {17/8}|Jebakan: {8/17} = sin R, {17/15} = sec R, {15/8} = cot R"},
+{t:'m',q:"<b>Soal 3.</b> [L1 · pilih <b>semua</b> yang benar] Segitiga ABC siku-siku di B. Pernyataan yang benar tentang sudut A:",f:T('B','A','C','X','AB = 3','BC = 4','AC = 5'),o:"sin A = {4/5};cos A = {3/5};tan A = {3/4};cot A = {3/4};sec A = {5/4}",a:[0,1,3],c:"DE = 4, SA = 3, MI = 5 → cek satu per satu.",l:"Terhadap A: depan = BC = 4, samping = AB = 3, miring = 5|A. sin A = {4/5} → <b>benar</b>|B. cos A = {3/5} → <b>benar</b>|C. tan A = {4/3}, bukan {3/4} → salah|D. cot A = {3/4} → <b>benar</b>|E. sec A = {5/3}, bukan {5/4} → salah"},
+{q:"<b>Soal 4.</b> [L2] θ lancip dengan sin θ = {3/5}. Nilai tan θ + sec θ adalah ...",o:"1;{3/2};2;{5/2};3",a:2,c:"DE = 3, MI = 5 → SA = 4. tan = {3/4}, sec = {5/4}.",l:"depan = 3, miring = 5 → samping = √[5² − 3²] = 4|tan θ = {3/4}|sec θ = miring ÷ samping = {5/4}|tan θ + sec θ = {3/4} + {5/4} = {8/4} = 2"},
+{q:"<b>Soal 5.</b> [L2] Tangga 13 m bersandar pada tembok. Ujung atas pada ketinggian 12 m. Nilai kosinus sudut antara tangga dan tanah adalah ...",f:T('','','','X','jarak = ?','tinggi = 12','tangga = 13'),o:"{5/13};{12/13};{5/12};{13/12};{12/5}",a:0,c:"Triple 5-12-13 → jarak kaki tangga = 5 = samping θ.",l:"Model: miring = tangga = 13, sisi tegak = 12|Jarak kaki tangga ke tembok = √[13² − 12²] = √[25] = 5|Sisi 5 menempel θ di tanah → samping = 5|cos θ = samping ÷ miring = {5/13}|Jebakan: {12/13} adalah sin θ"},
+{q:"<b>Soal 6.</b> [L2] Segitiga KLM siku-siku di L, KL = 10, LM = 24, KM = 26. Nilai sin K × tan M adalah ...",f:T('L','K','M','X','KL = 10','LM = 24','KM = 26'),o:"{5/13};{12/13};{5/12};{10/13};1",a:0,c:"sin K = {24/26} = {12/13}. tan M = {10/24} = {5/12}. Angka 12 saling coret.",l:"Siku-siku di L → miring = KM = 26|Sudut K: depan = LM = 24 → sin K = {24/26} = {12/13}|Sudut M: depan = KL = 10, samping = LM = 24 → tan M = {10/24} = {5/12}|{12/13} × {5/12} = {5/13} (12 saling coret)"},
+{q:"<b>Soal 7.</b> [L3] Segitiga ABC siku-siku di B, AB = x, BC = x + 7, AC = x + 8 (cm). Nilai tan C adalah ...",o:"{5/12};{12/5};{5/13};{12/13};{13/12}",a:0,c:"Coba triple 5-12-13: 12 − 5 = 7 dan 13 − 5 = 8. Cocok, AB = 5.",l:"Pythagoras: x² + (x + 7)² = (x + 8)²|2x² + 14x + 49 = x² + 16x + 64|x² − 2x − 15 = 0 → (x − 5)(x + 3) = 0 → x = 5|AB = 5, BC = 12, AC = 13|Terhadap C: depan = AB = 5, samping = BC = 12 → tan C = {5/12}"},
+{t:'b',q:"<b>Soal 8.</b> [L3 · benar-salah] Untuk sembarang sudut lancip θ pada segitiga siku-siku, tentukan setiap pernyataan.",o:"sin θ selalu kurang dari 1;tan θ selalu kurang dari 1;sec θ selalu lebih dari 1;Jika sin θ = {4/5}, maka cosec θ = {4/5}",a:[1,0,1,0],c:"sin dan cos &lt; 1, sec dan cosec &gt; 1, tan bisa lebih dari 1.",l:"(1) <b>Benar</b>. sin θ = depan ÷ miring, miring terpanjang|(2) <b>Salah</b>. Contoh: depan 12, samping 5 → tan θ = {12/5} &gt; 1|(3) <b>Benar</b>. sec θ = miring ÷ samping, miring lebih panjang|(4) <b>Salah</b>. cosec θ = 1 ÷ sin θ = {5/4}, bukan {4/5}"},
+{q:"<b>Soal 9.</b> [L2] Segitiga ABC siku-siku di B dengan tan A = {3/4} dan BC = 9 cm. Panjang AC adalah ... cm.",o:"12;13;15;18;21",a:2,c:"DE : SA : MI = 3 : 4 : 5. DE = 9 = 3 × 3 → MI = 5 × 3 = 15.",l:"Depan A = BC = 9|tan A = {BC/AB} = {3/4} → {9/AB} = {3/4} → AB = 12|AC = √[9² + 12²] = √[81 + 144] = √[225] = 15"}]};
+var tot=0,sc=0,L='ABCDE';
+function build(k){var h='';D[k].forEach(function(it,i){tot++;var t=it.t,o=it.o.split(';'),b='';
+if(t=='b')o.forEach(function(x,j){b+='<div class="bs"><span>('+(j+1)+') '+m(x)+'</span><button data-v="1">Benar</button><button data-v="0">Salah</button></div>'});
+else o.forEach(function(x,j){b+='<button data-j="'+j+'"><b>'+L[j]+'.</b> '+m(x)+'</button>'});
+h+='<div class="q" data-k="'+k+'" data-i="'+i+'">'+m(it.q)+(it.f||'')+'<div class="opts">'+b+'</div>'+(t?'<button class="chk">Periksa jawaban</button>':'')+'<div class="ex" hidden></div></div>'});
+document.getElementById(k+'-l')?document.getElementById(k+'-l').innerHTML=h:document.getElementById(k).innerHTML=h}
+Object.keys(D).forEach(build);
+function done(q,ok,ans){var it=D[q.dataset.k][q.dataset.i],e=q.querySelector('.ex');q.dataset.d=1;if(ok)sc++;
+document.getElementById('sk').textContent='Skor '+sc+'/'+tot;
+e.innerHTML='<div class="v">'+(ok?'✔ Benar!':'✘ Belum tepat.')+' Jawaban: '+ans+'</div><div class="cc"><b>⚡ Cara Cepat:</b> '+m(it.c)+'</div><div class="cl"><b>📘 Cara Lengkap (langkah demi langkah):</b><ol>'+it.l.split('|').map(function(x){return'<li>'+m(x)+'</li>'}).join('')+'</ol></div>';e.hidden=false}
+document.addEventListener('click',function(ev){var bt=ev.target.closest('button');if(!bt)return;var q=bt.closest('.q');if(!q||q.dataset.d)return;var it=D[q.dataset.k][q.dataset.i];
+if(bt.classList.contains('chk')){
+if(it.t=='m'){var bs=[].slice.call(q.querySelectorAll('.opts button')),ok=true;bs.forEach(function(x,j){var s=x.classList.contains('sel'),r=it.a.indexOf(j)>-1;if(s!=r)ok=false;x.classList.add(r?'ok':(s?'no':'x'))});done(q,ok,it.a.map(function(j){return L[j]}).join(', '))}
+else{var rs=[].slice.call(q.querySelectorAll('.bs')),ok=true;rs.forEach(function(r,j){var s=r.querySelector('.sel'),v=it.a[j]?'1':'0';if(!s||s.dataset.v!=v)ok=false;r.querySelector('[data-v="'+v+'"]').classList.add('ok')});done(q,ok,it.a.map(function(v,j){return'('+(j+1)+') '+(v?'Benar':'Salah')}).join(', '))}
+return}
+if(bt.dataset.j===undefined&&bt.dataset.v===undefined)return;
+if(bt.dataset.v!==undefined){bt.parentNode.querySelectorAll('button').forEach(function(x){x.classList.remove('sel')});bt.classList.add('sel');return}
+if(it.t=='m'){bt.classList.toggle('sel');return}
+var j=+bt.dataset.j;q.querySelectorAll('.opts button').forEach(function(x){x.disabled=true});
+q.querySelectorAll('.opts button')[it.a].classList.add('ok');if(j!=it.a)bt.classList.add('no');done(q,j==it.a,L[it.a]+'.')});
+</script></body></html>
