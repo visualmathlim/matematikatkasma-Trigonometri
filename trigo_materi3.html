@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modul 3 Trigonometri - VisualMath.Lim</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#022050;--cy:#00d6d8;--ye:#ffd300;--bg:#f3f8fb;--tx:#12243f;--card:#fff;--ok:#16a34a;--no:#dc2626;--ln:#d5e3ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;font-family:Lexend,system-ui,Arial,sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;font-size:16px}
+header{background:var(--navy);position:sticky;top:0;z-index:10;border-bottom:4px solid var(--ye)}
+.hd{max-width:980px;margin:auto;display:flex;align-items:center;gap:12px;padding:8px 14px;flex-wrap:wrap}
+.hd img{height:52px;width:52px;border-radius:50%;object-fit:cover}
+.hd h1{margin:0;font-size:clamp(.9rem,2.6vw,1.25rem);color:#fff;flex:1;min-width:180px;line-height:1.3}
+.hd h1 b{color:var(--cy)}
+.home{background:var(--cy);color:var(--navy);padding:8px 16px;border-radius:20px;font-weight:700;text-decoration:none}
+.home:hover,.home:focus-visible{background:var(--ye)}
+nav{max-width:980px;margin:auto;display:flex;gap:6px;overflow-x:auto;padding:0 14px 8px}
+nav a{color:#fff;text-decoration:none;font-size:.85rem;padding:4px 12px;border-radius:14px;white-space:nowrap;border:1px solid #2a4a85}
+nav a:hover,nav a:focus-visible{background:var(--cy);color:var(--navy)}
+main{max-width:980px;margin:auto;padding:14px}
+section{margin:26px 0}
+h2{color:var(--navy);border-left:8px solid var(--cy);padding-left:12px;font-size:1.4rem;margin:26px 0 12px}
+h3{color:var(--navy);margin:18px 0 8px;font-size:1.1rem}
+.hero{background:var(--navy);color:#fff;border-radius:16px;padding:22px;border-bottom:6px solid var(--ye)}
+.hero h2{color:var(--ye);border:0;padding:0;margin:0 0 6px}
+.box{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:14px 16px;margin:12px 0}
+.tip{border-left:6px solid var(--cy);background:#e8fcfc}
+.warn{border-left:6px solid var(--no);background:#fff1f1}
+.big{border-left:6px solid var(--ye);background:#fff9d6}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border:1px solid var(--ln);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--navy);color:#fff}
+.tw{overflow-x:auto}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 3px;line-height:1.25;font-size:.95em}
+.fr i{font-style:normal;border-bottom:1.5px solid currentColor;padding:0 3px}
+.fr b{font-weight:inherit;padding:0 3px}
+svg{max-width:100%;height:auto;display:block;margin:auto;background:#fff;border:1px solid var(--ln);border-radius:10px}
+figcaption{text-align:center;font-size:.85rem;color:#4b5f7a;margin:6px 0 0}
+figure{margin:12px 0}
+.q{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:14px 16px;margin:16px 0}
+.q h4{margin:0 0 6px;color:var(--navy)}
+.q .lv{display:inline-block;background:var(--ye);color:var(--navy);font-size:.75rem;font-weight:700;padding:1px 9px;border-radius:10px;margin-left:6px}
+.opt{display:block;width:100%;text-align:left;font:inherit;background:#f6fafd;border:2px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;cursor:pointer;color:var(--tx)}
+.opt:hover:not(:disabled),.opt:focus-visible{border-color:var(--cy)}
+.opt.ok{background:#dcfce7;border-color:var(--ok)}
+.opt.bad{background:#fee2e2;border-color:var(--no)}
+.opt:disabled{cursor:default}
+.chk{display:flex;gap:8px;align-items:center;margin:6px 0;padding:6px 10px;border:2px solid var(--ln);border-radius:10px}
+.chk.ok{background:#dcfce7;border-color:var(--ok)}.chk.bad{background:#fee2e2;border-color:var(--no)}
+.chk select{font:inherit;margin-left:auto}
+.go{background:var(--navy);color:#fff;border:0;border-radius:20px;padding:8px 20px;font:inherit;font-weight:700;cursor:pointer;margin-top:6px}
+.go:hover{background:var(--cy);color:var(--navy)}
+.ex{display:none;margin-top:10px}
+.ex.on{display:block}
+.fast{background:#fff9d6;border-left:6px solid var(--ye);padding:10px 14px;border-radius:8px;margin:8px 0}
+.full{background:#e8fcfc;border-left:6px solid var(--cy);padding:10px 14px;border-radius:8px}
+.full ol{margin:6px 0 0;padding-left:22px}
+.full li{margin:7px 0}
+.jb{margin-top:8px;color:var(--no);font-weight:500}
+.res{font-weight:700;margin:8px 0}
+summary{cursor:pointer;font-weight:500;color:var(--navy)}
+footer{background:var(--navy);color:#fff;text-align:center;padding:16px;margin-top:30px;border-top:4px solid var(--ye);font-size:.9rem}
+@media(max-width:560px){body{font-size:15px}.hd img{height:42px;width:42px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+<div class="hd">
+<img src="logo.png" alt="Logo VisualMath.Lim">
+<h1><b>VisualMath.Lim</b> - TKA Matematika Wajib SMA</h1>
+<a class="home" href="index.html">Home</a>
+</div>
+<nav>
+<a href="#a">A. Elevasi &amp; Depresi</a><a href="#b">B. Dua Segitiga</a><a href="#c">C. Aljabar</a><a href="#salah">Kesalahan Umum</a><a href="#contoh">Contoh Soal</a><a href="#latihan">Latihan</a><a href="#tka">Prediksi TKA</a><a href="#ringkas">Ringkasan</a>
+</nav>
+</header>
+<main>
+
+<div class="hero">
+<h2>Modul 3: Pemodelan dan Penalaran Tingkat Tinggi</h2>
+<div>Strategi menyelesaikan soal HOTS TKA (Level 3). Elemen: Trigonometri. Sub-elemen: Perbandingan Trigonometri.</div>
+</div>
+
+<div class="box tip">Modul 3 dari 3. Alat yang dibutuhkan: <b>SIN-DE-MI</b>, <b>COS-SA-MI</b>, <b>TAN-DE-SA</b> (Modul 1), serta nilai sudut istimewa dan tanda kuadran (Modul 2). Soal HOTS tidak memakai rumus baru. Yang diuji: <b>menggambar situasi, memilih perbandingan yang tepat, dan menyusun langkah</b>.</div>
+
+<h3>Setelah Modul 3, kamu bisa:</h3>
+<ul>
+<li>Membedakan <b>sudut elevasi</b> dan <b>sudut depresi</b>, lalu menggambar sketsa yang benar.</li>
+<li>Memakai <b>Lima Langkah Pemodelan</b> untuk soal cerita apa pun.</li>
+<li>Menyelesaikan soal <b>dua segitiga</b> dengan dua persamaan yang berbagi satu variabel.</li>
+<li>Memakai <b>faktor skala k</b> dan identitas <b>sin²θ + cos²θ = 1</b> pada soal aljabar.</li>
+</ul>
+
+<div class="tw"><table>
+<tr><th>Level</th><th>Proses berpikir</th><th>Wujud soal</th></tr>
+<tr><td><b>L1</b> Pengetahuan &amp; Pemahaman</td><td>Memahami, mengidentifikasi, menghitung</td><td>Membaca diagram elevasi/depresi; menghitung tinggi atau jarak dari satu segitiga</td></tr>
+<tr><td><b>L2</b> Aplikasi</td><td>Memodelkan, menerapkan</td><td>Soal cerita jadi segitiga siku-siku; tinggi mata; faktor skala</td></tr>
+<tr><td><b>L3</b> Penalaran</td><td>Menganalisis, mengevaluasi, menyimpulkan</td><td>Dua segitiga berbagi satu sisi; trigonometri + aljabar + identitas; menilai klaim benar/salah</td></tr>
+</table></div>
+
+<h3>Cek Prasyarat (3 menit)</h3>
+<div class="box">
+<p><b>P1.</b> Sebutkan nilai tan 30°, tan 45°, tan 60°.</p>
+<p><b>P2.</b> Segitiga siku-siku: sisi depan 5 dan sisi samping 12. Tentukan tan θ dan sisi miringnya.</p>
+<p><b>P3.</b> Rasionalkan <span data-m>{12|√3}</span>.</p>
+<details><summary>Lihat jawaban</summary>
+<p data-m><b>P1:</b> tan 30° = {√3|3}, tan 45° = 1, tan 60° = √3.<br><b>P2:</b> tan θ = {5|12}; miring = √(5² + 12²) = √169 = 13.<br><b>P3:</b> {12|√3} × {√3|√3} = {12√3|3} = 4√3.</p></details>
+</div>
+
+<section id="a">
+<h2>Bagian A. Soal Cerita: Sudut Elevasi dan Depresi</h2>
+<div class="box big"><b>Ide besar:</b> hampir semua soal cerita trigonometri berujung pada <b>satu segitiga siku-siku</b>. Tugasmu bukan menghafal rumus baru, tetapi <b>menggambar situasinya</b> sampai segitiga itu terlihat.</div>
+<h3>A.1 Elevasi dan depresi</h3>
+<p>Kedua sudut selalu diukur dari <b>garis horizontal</b> (mendatar), bukan dari tiang atau dinding.</p>
+<figure id="fig1"></figure>
+<ul>
+<li><b>Sudut elevasi:</b> dari garis horizontal di mata pengamat <b>ke atas</b> menuju objek.</li>
+<li><b>Sudut depresi:</b> dari garis horizontal <b>ke bawah</b> menuju objek.</li>
+<li>Elevasi dari bawah dan depresi dari atas pada garis pandang yang sama <b>sama besar</b> (sudut dalam berseberangan).</li>
+</ul>
+<div class="box warn"><b>Hati-hati:</b> jangan ukur sudut depresi dari tiang. Sudut antara garis pandang dan tiang (sudut R) adalah <b>sudut sisa</b>: R = 90° − sudut depresi.</div>
+<h3>A.2 Lima Langkah Pemodelan</h3>
+<div class="tw"><table>
+<tr><th>Langkah</th><th>Yang dilakukan</th></tr>
+<tr><td><b>1. GAMBAR</b></td><td>Buat sketsa besar. Tarik <b>garis horizontal</b> dari mata pengamat dan gambar segitiga siku-siku.</td></tr>
+<tr><td><b>2. TANDAI</b></td><td>Tulis semua angka dan sudut. Beri huruf <b>h</b> atau <b>x</b> pada yang ditanyakan.</td></tr>
+<tr><td><b>3. PILIH</b></td><td>Yang diketahui dan ditanya adalah sisi apa? Pilih <b>SIN-DE-MI</b>, <b>COS-SA-MI</b>, atau <b>TAN-DE-SA</b> yang memuat kedua sisi itu. Tinggi dan jarak mendatar: hampir selalu <b>tan</b>.</td></tr>
+<tr><td><b>4. HITUNG</b></td><td>Tulis persamaan, selesaikan. Rasionalkan penyebut bentuk akar.</td></tr>
+<tr><td><b>5. CEK</b></td><td>Satuan benar? Tinggi mata sudah ditambah? Sisi miring terpanjang? Hasil masuk akal?</td></tr>
+</table></div>
+</section>
+
+<section id="b">
+<h2>Bagian B. Dua Segitiga yang Berbagi Satu Sisi</h2>
+<div class="box big"><b>Ide besar:</b> tulis <b>satu persamaan untuk tiap segitiga</b>, lalu hubungkan keduanya lewat sisi yang dibagi. Dua persamaan, dua hal yang belum diketahui.</div>
+<div class="box warn" data-m><b>Hati-hati:</b> jarak ke kaki menara adalah <b>h ÷ tan</b>, bukan h × tan. Makin kecil sudut elevasi, makin <b>jauh</b> pengamat. Jadi jarak A (30°) harus lebih besar dari jarak B (60°).</div>
+<div class="box tip"><b>Pola dua segitiga:</b> (1) cari sisi yang dibagi kedua segitiga, (2) tulis tan, sin, atau cos untuk tiap segitiga, (3) <b>kurangkan atau jumlahkan</b> sisi yang sejajar. Jika sisi yang dibagi belum diketahui, namai h dan samakan dua ungkapan untuk h atau jarak.</div>
+</section>
+
+<section id="c">
+<h2>Bagian C. Trigonometri dan Aljabar</h2>
+<div class="box big">Tiga alat: <b>faktor skala k</b>, <b>identitas sin²θ + cos²θ = 1</b>, dan <b>persamaan trigonometri sederhana</b> (memakai kuadran Modul 2).</div>
+<h3>C.1 Faktor skala k</h3>
+<p data-m>Satu perbandingan hanya memberi <b>rasio</b> sisi. Ukuran sebenarnya = rasio × k. Contoh: sin θ = {3|5} berarti sisi-sisinya <b>3k, 4k, 5k</b>.</p>
+<h3>C.2 Identitas dasar</h3>
+<p data-m>Pada segitiga siku-siku dengan sisi samping x, depan y, miring r berlaku x² + y² = r². Bagi kedua ruas dengan r²: {x²|r²} + {y²|r²} = 1, yaitu <b>cos²θ + sin²θ = 1</b>.</p>
+<div class="tw"><table data-m>
+<tr><th>Identitas</th><th>Cara pakai</th></tr>
+<tr><td><b>sin²θ + cos²θ = 1</b></td><td>Ubah sin² menjadi 1 − cos², atau sebaliknya</td></tr>
+<tr><td><b>tan θ = {sin θ|cos θ}</b></td><td>Ubah tan menjadi sin dan cos</td></tr>
+<tr><td><b>(sin θ + cos θ)² = 1 + 2 sin θ cos θ</b></td><td>Cari hasil kali sin dan cos dari jumlahnya</td></tr>
+</table></div>
+<div class="box warn"><b>Hati-hati:</b> (sin θ + cos θ)² <b>tidak sama dengan</b> sin²θ + cos²θ. Pakai (a + b)² = a² + 2ab + b², sehingga suku <b>2 sin θ cos θ</b> wajib muncul.</div>
+<h3>C.3 Persamaan trigonometri sederhana</h3>
+<div class="box tip">Cari <b>sudut referensi</b> dari nilai positifnya, lalu tentukan kuadran dari tanda. Kuadran II: 180° − α. Kuadran III: 180° + α. Kuadran IV: 360° − α. (Semua Siswa Tetap Cerdas: K-I semua positif, K-II sin, K-III tan, K-IV cos.)</div>
+</section>
+
+<section id="salah">
+<h2>Bank Kesalahan Umum</h2>
+<div class="tw"><table data-m>
+<tr><th>Kesalahan</th><th>Mengapa salah</th><th>Yang benar</th></tr>
+<tr><td>Mengukur depresi dari tiang</td><td>Diukur dari garis <b>horizontal</b></td><td>Tarik garis horizontal lebih dulu</td></tr>
+<tr><td>Lupa tinggi mata</td><td>Elevasi dihitung dari mata</td><td>Tinggi = hasil tan + tinggi mata</td></tr>
+<tr><td>Jarak = h × tan θ</td><td>Jarak adalah sisi samping</td><td>Jarak = h ÷ tan θ</td></tr>
+<tr><td>h(tan 60° − tan 30°) = 20</td><td>Yang dikurangkan <b>jarak</b></td><td>h ÷ tan 30° − h ÷ tan 60° = 20</td></tr>
+<tr><td>(sin θ + cos θ)² = 1</td><td>Suku 2 sin θ cos θ hilang</td><td>(sin θ + cos θ)² = 1 + 2 sin θ cos θ</td></tr>
+</table></div>
+</section>
+
+<section id="contoh">
+<h2>Contoh Soal</h2>
+<p>Pilih jawabanmu dulu. Setelah itu muncul <b>Cara Cepat</b> dan <b>Cara Lengkap</b> langkah demi langkah.</p>
+<div id="ex"></div>
+</section>
+
+<section id="latihan">
+<h2>Latihan Bertingkat</h2>
+<p>Gambar sketsa di kertas dan ikuti Lima Langkah Pemodelan, baru pilih jawaban.</p>
+<div id="lat"></div>
+</section>
+
+<section id="tka">
+<h2>Prediksi Soal TKA: Pemodelan dan Penalaran (HOTS)</h2>
+<p>Bentuk soal: pilihan ganda, pilihan ganda kompleks (pilih semua yang benar), dan benar-salah.</p>
+<div id="tka-list"></div>
+</section>
+
+<section id="ringkas">
+<h2>Lembar Ringkas Modul 3</h2>
+<div class="tw"><table data-m>
+<tr><th>Strategi</th><th>Isi</th></tr>
+<tr><td><b>Lima Langkah</b></td><td>GAMBAR (garis horizontal) → TANDAI → PILIH → HITUNG → CEK</td></tr>
+<tr><td><b>Elevasi &amp; depresi</b></td><td>Diukur dari garis horizontal. Elevasi dari bawah = depresi dari atas. Jangan lupa tinggi mata.</td></tr>
+<tr><td><b>Dua segitiga</b></td><td>Satu persamaan per segitiga, hubungkan lewat sisi yang dibagi. Jarak = h ÷ tan.</td></tr>
+<tr><td><b>Faktor skala</b></td><td>sin θ = {3|5} → sisi 3k, 4k, 5k. Cari k dari keliling atau sisi yang diketahui.</td></tr>
+<tr><td><b>Identitas</b></td><td>sin²θ + cos²θ = 1; (sin θ ± cos θ)² = 1 ± 2 sin θ cos θ</td></tr>
+<tr><td><b>Persamaan sederhana</b></td><td>Sudut referensi dari nilai positif, kuadran dari tanda.</td></tr>
+</table></div>
+<div class="box tip"><b>Rangkuman tiga modul.</b> Modul 1: SINDEMI, COSAMI, TANDESA. Modul 2: nilai 30°, 45°, 60° dan kuadran. Modul 3: pemodelan, dua segitiga, faktor skala, identitas, persamaan sederhana.</div>
+<div class="box">
+<b>Centang kalau sudah bisa</b>
+<p><label><input type="checkbox"> Saya menarik garis horizontal sebelum menandai sudut elevasi atau depresi.</label></p>
+<p><label><input type="checkbox"> Saya selalu menambahkan tinggi mata bila disebut di soal.</label></p>
+<p><label><input type="checkbox"> Saya bisa menulis dua persamaan dari dua segitiga yang berbagi satu sisi.</label></p>
+<p><label><input type="checkbox"> Saya ingat (sin θ + cos θ)² = 1 + 2 sin θ cos θ.</label></p>
+<p><label><input type="checkbox"> Saya mengecek kewajaran hasil: sisi miring terpanjang, satuan benar, sudut makin kecil berarti jarak makin jauh.</label></p>
+</div>
+</main>
+<footer>VisualMath.Lim • Modul 3 TKA Trigonometri • SEE • THINK • SOLVE</footer>
+
+<script>
+/* ===== Penulisan rumus: {a|b} = pecahan ===== */
+const M=s=>String(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,'<span class="fr"><i>$1</i><b>$2</b></span>');
+
+/* ===== Gambar SVG (semua dalam viewBox dengan ruang aman) ===== */
+const T=(x,y,t,c,s)=>`<text x="${x}" y="${y}" fill="${c||'#12243f'}" font-size="${s||14}" font-weight="700" font-family="Lexend,Arial">${t}</text>`;
+const G='<line x1="15" y1="215" x2="425" y2="215" stroke="#022050" stroke-width="3"/>';
+const man='<circle cx="50" cy="157" r="7" fill="none" stroke="#022050" stroke-width="2.5"/><path d="M50 164V190M50 190L42 215M50 190L58 215" stroke="#022050" stroke-width="2.5" fill="none"/>';
+const wall='<rect x="330" y="60" width="34" height="155" fill="#d8dee6" stroke="#022050" stroke-width="2"/>';
+const dash='stroke="#7a8794" stroke-dasharray="6 4" stroke-width="1.5"';
+const FIG={
+elev:(pqr)=>`<svg viewBox="0 0 440 250" role="img" aria-label="Sudut elevasi dan depresi">${G}${man}${wall}
+<line x1="60" y1="60" x2="330" y2="60" ${dash}/><line x1="50" y1="157" x2="330" y2="157" ${dash}/>
+<line x1="50" y1="157" x2="330" y2="60" stroke="#c0392b" stroke-width="4"/><circle cx="330" cy="60" r="5" fill="#022050"/>
+<path d="M95 157A45 45 0 0 0 92.5 142.3" stroke="#022050" stroke-width="2.5" fill="none"/>
+<path d="M285 60A45 45 0 0 0 287.5 74.7" stroke="#022050" stroke-width="2.5" fill="none"/>
+${pqr?'<path d="M330 105A45 45 0 0 1 287.5 74.7" stroke="#022050" stroke-width="2.5" fill="none"/>'+T(108,150,'P','#022050',16)+T(255,100,'Q','#022050',16)+T(296,112,'R','#022050',16)
+:T(105,192,'sudut elevasi','#1f6fa8')+T(150,40,'sudut depresi','#1b8a4a')+T(150,115,'garis pandang','#c0392b',13)+'<text x="14" y="52" fill="#7a8794" font-size="12" font-family="Lexend,Arial">garis horizontal</text>'}
+${T(322,50,'T')}${T(20,238,'pengamat','#12243f',12)}</svg>`,
+two:(a,b,d,ang1,ang2)=>`<svg viewBox="0 0 400 265" role="img" aria-label="Dua titik pengamatan">
+<line x1="15" y1="200" x2="385" y2="200" stroke="#022050" stroke-width="3"/>
+<line x1="40" y1="200" x2="340" y2="50" stroke="#c0392b" stroke-width="4"/><line x1="200" y1="200" x2="340" y2="50" stroke="#c0392b" stroke-width="4"/>
+<line x1="340" y1="50" x2="340" y2="200" stroke="#1b8a4a" stroke-width="5"/>
+<path d="M80 200A40 40 0 0 0 75.8 182.1" stroke="#022050" stroke-width="2.5" fill="none"/><path d="M235 200A35 35 0 0 0 223.9 174.4" stroke="#1f6fa8" stroke-width="2.5" fill="none"/>
+${[40,200,340].map(x=>`<circle cx="${x}" cy="200" r="5" fill="#022050"/>`).join('')}<circle cx="340" cy="50" r="4" fill="#022050"/>
+${T(88,194,a,'#022050',13)}${T(238,192,b,'#1f6fa8',13)}${T(352,130,'h','#1b8a4a',17)}${T(332,40,'T')}${T(32,224,'A')}${T(192,224,'B')}${T(332,224,'F')}
+<line x1="44" y1="244" x2="196" y2="244" stroke="#022050" stroke-width="1.8"/><path d="M52 239L44 244L52 249M188 239L196 244L188 249" stroke="#022050" fill="none" stroke-width="1.8"/>${T(95,260,d,'#022050',13)}</svg>`,
+bd:(L)=>`<svg viewBox="0 0 340 235" role="img" aria-label="Segitiga ABC dengan titik D">
+<polygon points="50,30 50,190 300,190" fill="#f3f6f9" stroke="#022050" stroke-width="4" stroke-linejoin="round"/>
+<line x1="50" y1="30" x2="133" y2="190" stroke="#022050" stroke-width="2.5" stroke-dasharray="7 5"/><circle cx="133" cy="190" r="4" fill="#022050"/>
+<path d="M50 170H70V190" fill="none" stroke="#022050" stroke-width="2"/>
+<path d="M50 70A40 40 0 0 0 68.4 65.5" stroke="#1b8a4a" stroke-width="3" fill="none"/><path d="M50 92A62 62 0 0 0 102 63.8" stroke="#1f6fa8" stroke-width="3" fill="none"/>
+${T(54,108,'30°','#1b8a4a',13)}${T(112,102,'60°','#1f6fa8',13)}${T(34,24,'A')}${T(34,212,'B')}${T(304,212,'C')}${T(126,214,'D')}${T(14,118,L)}</svg>`
+};
+const cap=(svg,t)=>`<figure>${svg}<figcaption>${t}</figcaption></figure>`;
+document.getElementById('fig1').innerHTML=FIG.elev(false)+'<figcaption>Gambar 1. Sudut elevasi (dari bawah ke atas) dan sudut depresi (dari atas ke bawah)</figcaption>';
+
+/* ===== Bank soal. o=opsi, a=kunci, f=cara cepat, s=langkah cara lengkap, j=jebakan ===== */
+const EX=[
+{t:'Contoh 1 · Tinggi gedung dengan tinggi mata',l:'L2',q:'Rani berdiri 20 m dari sebuah gedung. Tinggi matanya 1,5 m dari tanah. Ia melihat puncak gedung dengan sudut elevasi 45°. Tinggi gedung adalah ...',o:['20 m','21,5 m','30 m','20√2 m'],a:1,
+f:'TAN-DE-SA: DE = 20 × tan 45° = 20. Tambah tinggi mata: 20 + 1,5 = <b>21,5 m</b>.',
+s:['<b>Gambar:</b> tarik garis mendatar dari mata. Terbentuk segitiga siku-siku: alas (SA) = 20 m, sudut 45° di mata, tinggi di atas mata = DE.','<b>Pilih:</b> yang diketahui SA, yang ditanya DE → TAN-DE-SA: tan 45° = {DE|20}','tan 45° = 1, maka DE = 20 × 1 = 20 m','DE baru tinggi <b>dari garis mata</b>. Tambahkan tinggi mata: 20 + 1,5 = 21,5 m','<b>Cek:</b> 21,5 m wajar untuk gedung sekitar 6 lantai ✔'],j:'Jebakan: lupa menambah 1,5 m (jawaban 20 m).',fig:FIG.elev(false)},
+{t:'Contoh 2 · Sudut depresi',l:'L2',q:'Dari puncak menara setinggi 40 m, penjaga melihat sebuah perahu dengan sudut depresi 30°. Jarak perahu dari kaki menara adalah ... (abaikan tinggi mata)',o:['40√3 m','20√3 m','{40√3|3} m','40 m'],a:0,
+f:'Depresi 30° = elevasi 30° dari perahu. d = 40 ÷ tan 30° = 40 ÷ {√3|3} = <b>40√3 m</b>.',
+s:['<b>Gambar:</b> tarik garis horizontal dari puncak. Sudut depresi 30° sama besar dengan sudut elevasi 30° di perahu (sudut dalam berseberangan).','Tinggi menara 40 = DE, jarak perahu d = SA. Pakai TAN-DE-SA: tan 30° = {40|d}','Ubah: d = {40|tan 30°} = 40 ÷ {√3|3} = 40 × {3|√3} = {120|√3}','Rasionalkan: {120|√3} × {√3|√3} = {120√3|3} = 40√3 m','<b>Cek:</b> jarak lebih besar dari tinggi karena sudutnya kecil ✔ (± 69,3 m)'],j:'Jebakan: d = 40 × tan 30° menukar posisi SA dan DE.'},
+{t:'Contoh 3 · Pengamat mendekati menara',l:'L3',q:'Dari titik A, sudut elevasi puncak menara 30°. Pengamat berjalan 20 m mendekati menara ke titik B, sudut elevasi menjadi 60°. Tinggi menara adalah ... (abaikan tinggi mata)',o:['5√3 m','10√3 m','20√3 m','10 m'],a:1,fig:FIG.two('30°','60°','20 m'),
+f:'Jarak = h ÷ tan. Selisih jarak = 20: h√3 − {h|√3} = 20 → {2h|√3} = 20 → h = <b>10√3 m</b>.',
+s:['<b>Gambar:</b> dua segitiga siku-siku TBF dan TAF berbagi sisi tinggi TF = h. Misalkan BF = x.','Segitiga TBF: tan 60° = {h|x} → x = {h|√3}','Segitiga TAF: tan 30° = {h|x + 20} → x + 20 = h√3','Substitusi x: {h|√3} + 20 = h√3 → 20 = h√3 − {h|√3} = h × {3 − 1|√3} = {2h|√3}','h = {20√3|2} = 10√3 m','<b>Cek:</b> x = 10, jarak A = 30, tan 30° = {10√3|30} = {√3|3} ✔'],j:'Jebakan: h(tan 60° − tan 30°) = 20 salah. Yang dikurangkan jarak, bukan tangen.'},
+{t:'Contoh 4 · Sudut yang dibelah',l:'L3',q:'Segitiga ABC siku-siku di B dengan AB = 6. Titik D pada BC sehingga ∠BAD = 30° dan ∠BAC = 60°. Panjang CD adalah ...',o:['2√3','4√3','6√3','12√3'],a:1,fig:FIG.bd('6'),
+f:'CD = 6 tan 60° − 6 tan 30° = 6√3 − 2√3 = <b>4√3</b>.',
+s:['Dua segitiga ABC dan ABD berbagi sisi AB = 6 (siku-siku di B).','Segitiga ABC: tan 60° = {BC|6} → BC = 6√3','Segitiga ABD: tan 30° = {BD|6} → BD = 6 × {√3|3} = 2√3','D di antara B dan C, maka CD = BC − BD = 6√3 − 2√3 = 4√3'],j:'Jebakan: 2√3 adalah BD saja.'},
+{t:'Contoh 5 · Faktor skala k',l:'L2',q:'Segitiga siku-siku memiliki sin θ = {3|5} dan keliling 36 cm. Luas segitiga adalah ...',o:['27 cm²','54 cm²','108 cm²','36 cm²'],a:1,
+f:'Triple 3-4-5: 12k = 36 → k = 3 → sisi 9 dan 12. Luas = {1|2} × 9 × 12 = <b>54 cm²</b>.',
+s:['sin θ = {DE|MI} = {3|5} → sisi depan 3k dan miring 5k.','Sisi samping = √((5k)² − (3k)²) = √(16k²) = 4k','Keliling: 3k + 4k + 5k = 12k = 36 → k = 3','Sisi siku-siku: 9 cm dan 12 cm','Luas = {1|2} × alas × tinggi = {1|2} × 9 × 12 = 54 cm²']},
+{t:'Contoh 6 · Jumlah diketahui, cari hasil kali',l:'L3',q:'θ sudut lancip dengan sin θ + cos θ = {7|5}. Nilai sin θ · cos θ adalah ...',o:['{6|25}','{12|25}','{24|25}','{49|25}'],a:1,
+f:'Kuadratkan: {49|25} = 1 + 2 sin θ cos θ → 2sc = {24|25} → sc = <b>{12|25}</b>.',
+s:['Kuadratkan kedua ruas: (sin θ + cos θ)² = ({7|5})²','Ruas kiri: sin²θ + 2 sin θ cos θ + cos²θ = 1 + 2 sin θ cos θ','Ruas kanan: {49|25}','1 + 2 sin θ cos θ = {49|25} → 2 sin θ cos θ = {49|25} − {25|25} = {24|25}','sin θ cos θ = {12|25}','<b>Cek:</b> sin θ = {3|5}, cos θ = {4|5}: jumlah {7|5}, hasil kali {12|25} ✔'],j:'Jebakan: (sin θ + cos θ)² ≠ 1. Suku 2 sin θ cos θ tidak boleh hilang.'},
+{t:'Contoh 7 · Mencari sudut dari nilai',l:'L3',q:'Untuk 0° ≤ θ ≤ 360°, nilai θ yang memenuhi 2 cos θ + √3 = 0 adalah ...',o:['30° dan 330°','150° dan 210°','120° dan 240°','150° dan 330°'],a:1,
+f:'cos θ = −{√3|2}. Referensi 30°. cos negatif di K-II dan K-III: 180° − 30° = 150° dan 180° + 30° = <b>210°</b>.',
+s:['Pindahkan: 2 cos θ = −√3 → cos θ = −{√3|2}','Sudut referensi (pakai nilai positif): cos α = {√3|2} → α = 30°','cos bernilai negatif di Kuadran II dan III (cos hanya positif di K-IV dan K-I)','K-II: 180° − 30° = 150°','K-III: 180° + 30° = 210°'],j:'Jebakan: 150° dan 330° memakai K-IV, padahal cos di K-IV positif.'}
+];
+const LAT=[
+{t:'Latihan 1',l:'L1',q:'Pengamat berdiri 10 m dari tiang. Elevasi puncak tiang 45° (abaikan tinggi mata). Tinggi tiang ...',o:['5 m','10 m','10√2 m','10√3 m'],a:1,f:'h = 10 × tan 45° = <b>10 m</b>.',s:['TAN-DE-SA: tan 45° = {h|10}','h = 10 × 1 = 10 m']},
+{t:'Latihan 2',l:'L1',q:'Elevasi puncak pohon dari titik berjarak 18 m adalah 30° (abaikan tinggi mata). Tinggi pohon ...',o:['6√3 m','18√3 m','6 m','9 m'],a:0,f:'h = 18 × {√3|3} = <b>6√3 m</b>.',s:['tan 30° = {h|18}','h = 18 × {√3|3} = 6√3 m']},
+{t:'Latihan 3',l:'L1',q:'Dari puncak mercusuar setinggi 60 m, kapal terlihat dengan sudut depresi 45°. Jarak kapal dari kaki mercusuar ...',o:['30 m','60 m','60√3 m','60√2 m'],a:1,f:'d = 60 ÷ tan 45° = <b>60 m</b>.',s:['Depresi 45° = elevasi 45° dari kapal.','tan 45° = {60|d} = 1','d = 60 m']},
+{t:'Latihan 4',l:'L1',q:'Dari puncak gedung setinggi 30 m, sebuah titik di tanah terlihat dengan sudut depresi 60°. Jarak titik dari kaki gedung ...',o:['10√3 m','30√3 m','10 m','15 m'],a:0,f:'d = {30|√3} = <b>10√3 m</b>.',s:['tan 60° = {30|d} → d = {30|√3}','Rasionalkan: {30|√3} × {√3|√3} = {30√3|3} = 10√3 m']},
+{t:'Latihan 5',l:'L2',q:'Tinggi mata pengamat 1,5 m. Ia berdiri 20 m dari tiang, elevasi puncak 30°. Tinggi tiang ...',o:['20√3 m','{20√3|3} + 1,5 m','20√3 + 1,5 m','{20√3|3} m'],a:1,f:'20 tan 30° + 1,5 = <b>{20√3|3} + 1,5 m</b> (± 13,05 m).',s:['tan 30° = {DE|20} → DE = 20 × {√3|3} = {20√3|3}','Tambah tinggi mata: {20√3|3} + 1,5 m']},
+{t:'Latihan 6',l:'L2',q:'Tangga 10 m bersandar pada dinding, sudut 60° dengan lantai. Tinggi ujung atas tangga dan jarak kaki tangga ke dinding berturut-turut ...',o:['5 m dan 5√3 m','5√3 m dan 5 m','10√3 m dan 10 m','5√3 m dan 10 m'],a:1,f:'Tinggi = 10 sin 60° = 5√3. Jarak = 10 cos 60° = <b>5</b>.',s:['Tangga = sisi miring (MI) = 10.','Tinggi (DE): sin 60° = {DE|10} → DE = 10 × {√3|2} = 5√3','Jarak (SA): cos 60° = {SA|10} → SA = 10 × {1|2} = 5']},
+{t:'Latihan 7',l:'L2',q:'Segitiga siku-siku memiliki sin θ = {4|5} dan keliling 48 cm. Luasnya ...',o:['48 cm²','96 cm²','192 cm²','24 cm²'],a:1,f:'4k, 3k, 5k → 12k = 48 → k = 4 → sisi 12, 16, 20. Luas = {1|2} × 12 × 16 = <b>96</b>.',s:['Depan 4k, miring 5k, samping 3k.','12k = 48 → k = 4','Sisi siku-siku 12 cm dan 16 cm','Luas = {1|2} × 12 × 16 = 96 cm²']},
+{t:'Latihan 8',l:'L2',q:'Dari titik A, elevasi puncak pohon 30°. Pengamat maju 12 m ke titik B (menuju pohon), elevasi menjadi 45°. Tinggi pohon ...',o:['6(√3 + 1) m','12(√3 + 1) m','6√3 m','12 m'],a:0,f:'h + 12 = h√3 → h = {12|√3 − 1} = <b>6(√3 + 1) m</b>.',s:['Misal BF = x. tan 45° = {h|x} → x = h','tan 30° = {h|x + 12} → x + 12 = h√3','Substitusi: h + 12 = h√3 → h(√3 − 1) = 12','h = {12|√3 − 1} × {√3 + 1|√3 + 1} = {12(√3 + 1)|2} = 6(√3 + 1) m']},
+{t:'Latihan 9',l:'L2',q:'Dari puncak menara setinggi 20 m terlihat dua perahu segaris dengan menara, depresi 45° dan 30°. Jarak antara kedua perahu ...',o:['20 m','20√3 m','20(√3 − 1) m','20(√3 + 1) m'],a:2,f:'Selisih jarak = 20√3 − 20 = <b>20(√3 − 1) m</b> (± 14,6 m).',s:['Perahu 1: 20 ÷ tan 45° = 20','Perahu 2: 20 ÷ tan 30° = 20√3','Jarak kedua perahu = 20√3 − 20 = 20(√3 − 1) m']},
+{t:'Latihan 10',l:'L3',q:'θ lancip dan sin θ − cos θ = {1|5}. Nilai sin θ + cos θ adalah ...',o:['{7|5}','{6|5}','{1|5}','{12|25}'],a:0,f:'(s − c)² = 1 − 2sc → sc = {12|25}; (s + c)² = {49|25} → <b>{7|5}</b>.',s:['(sin θ − cos θ)² = 1 − 2 sin θ cos θ → {1|25} = 1 − 2sc','2sc = {24|25} → sc = {12|25}','(sin θ + cos θ)² = 1 + 2sc = {49|25}','θ lancip, nilainya positif → sin θ + cos θ = {7|5}']},
+{t:'Latihan 11',l:'L3',q:'Bentuk (1 − sin θ)(1 + sin θ) sama dengan ...',o:['cos²θ','sin²θ','1','1 − 2 sin θ'],a:0,f:'Selisih kuadrat: 1 − sin²θ = <b>cos²θ</b>.',s:['(a − b)(a + b) = a² − b² dengan a = 1, b = sin θ','Hasil: 1 − sin²θ','Dari sin²θ + cos²θ = 1 → 1 − sin²θ = cos²θ']},
+{t:'Latihan 12',l:'L3',q:'Untuk 0° ≤ θ ≤ 360°, nilai θ yang memenuhi tan θ = −1 adalah ...',o:['45° dan 225°','135° dan 315°','135° dan 225°','45° dan 315°'],a:1,f:'Referensi 45°, tan negatif di K-II dan K-IV: <b>135° dan 315°</b>.',s:['Nilai positif tan α = 1 → α = 45°','tan negatif di K-II dan K-IV','K-II: 180° − 45° = 135°','K-IV: 360° − 45° = 315°']}
+];
+const TKA=[
+{t:'Soal 1',l:'L1 · Memahami informasi',q:'Perhatikan gambar. Sudut depresi dari puncak menara T ke pengamat ditunjukkan oleh sudut ...',fig:FIG.elev(true),o:['P','Q','R','P dan R','Q dan R'],a:1,f:'Depresi = dari garis <b>horizontal di T ke bawah</b> menuju pengamat → <b>Q</b>.',s:['P diukur dari horizontal di pengamat ke atas → sudut <b>elevasi</b> (besarnya sama dengan Q, tetapi namanya elevasi).','Q diukur dari horizontal di T ke bawah → sudut <b>depresi</b>.','R diukur dari tiang, bukan dari horizontal. R = 90° − Q (sudut sisa).']},
+{t:'Soal 2',l:'L1 · Menghitung',q:'Dari titik A yang berjarak 24 m dari kaki gedung, sudut elevasi puncak gedung 30° (abaikan tinggi pengamat). Tinggi gedung ... m.',o:['8','8√2','8√3','12√3','24√3'],a:2,f:'h = 24 × {√3|3} = <b>8√3</b>.',s:['TAN-DE-SA: DE = h, SA = 24','h = 24 × tan 30° = 24 × {√3|3} = 8√3 m'],j:'Jebakan: 24√3 berasal dari memakai tan 30° = √3.'},
+{t:'Soal 3',l:'L2 · Memodelkan',q:'Pengamat dengan tinggi mata 1,5 m berdiri 15 m dari tiang. Elevasi puncak tiang 60°. Tinggi tiang ... m.',o:['15√3','15√3 + 1,5','15 + 1,5','{15√3|2} + 1,5','30 + 1,5'],a:1,f:'15 tan 60° = 15√3, tambah mata: <b>15√3 + 1,5</b>.',s:['tan 60° = {DE|15} → DE = 15√3 m (dari garis mata)','Tinggi tiang = DE + tinggi mata = 15√3 + 1,5 m']},
+{t:'Soal 4',l:'L2 · Menerapkan',q:'Segitiga ABC siku-siku di B dengan sin A = {5|13} dan keliling 60 cm. Luas segitiga ABC ... cm².',o:['60','100','120','130','240'],a:2,f:'Triple 5-12-13: 30k = 60 → k = 2 → BC = 10, AB = 24. Luas = <b>120</b>.',s:['Depan A adalah BC. sin A = {BC|AC} = {5|13} → BC = 5k, AC = 13k','AB = √(169k² − 25k²) = 12k','Keliling 5k + 12k + 13k = 30k = 60 → k = 2','Luas = {1|2} × 10 × 24 = 120 cm²'],j:'Jebakan: 60 adalah keliling, bukan luas.'},
+{t:'Soal 5',l:'L3 · Memecahkan masalah',q:'Dari titik A, elevasi puncak menara 45°. Pengamat berjalan 10 m mendekati menara ke titik B, elevasi menjadi 60° (abaikan tinggi mata). Tinggi menara ... m.',fig:FIG.two('45°','60°','10 m'),o:['5√3','10√3','15 + 5√3','10 + 10√3','30'],a:2,f:'h − {h|√3} = 10 → h = {10√3|√3 − 1} = <b>15 + 5√3</b>.',s:['Jarak A ke kaki = h ÷ tan 45° = h; jarak B ke kaki = {h|√3}','AB = h − {h|√3} = 10 → h × {√3 − 1|√3} = 10','h = {10√3|√3 − 1}','Rasionalkan: {10√3|√3 − 1} × {√3 + 1|√3 + 1} = {10(3 + √3)|2} = 15 + 5√3','<b>Cek:</b> h ≈ 23,66; jarak A ≈ 23,66; jarak B ≈ 13,66; selisih 10 ✔']},
+{t:'Soal 6',l:'L3 · Memecahkan masalah',q:'Segitiga ABC siku-siku di B dengan AB = 12. Titik D pada BC sehingga ∠BAD = 30° dan ∠BAC = 60°. Panjang CD ...',fig:FIG.bd('12'),o:['4√3','8√3','12√3','12','24'],a:1,f:'12√3 − 4√3 = <b>8√3</b>.',s:['Segitiga ABC: tan 60° = {BC|12} → BC = 12√3','Segitiga ABD: tan 30° = {BD|12} → BD = 12 × {√3|3} = 4√3','CD = BC − BD = 12√3 − 4√3 = 8√3'],j:'Jebakan: 4√3 adalah BD saja.'},
+{t:'Soal 7',l:'L3 · Menganalisis · Pilih semua yang benar',ty:'m',q:'θ sudut lancip dengan sin θ + cos θ = {17|13}. Pilih <b>semua</b> pernyataan yang benar.',o:['sin θ · cos θ = {60|169}','|sin θ − cos θ| = {7|13}','tan θ = {5|12}','sin θ = {5|13}','sin²θ + cos²θ = 1'],a:[0,1,4],f:'Kuadratkan: {289|169} = 1 + 2sc → sc = {60|169}. Sin dan cos adalah {5|13} dan {12|13} <b>urutannya belum pasti</b>.',s:['<b>A:</b> 2sc = {289 − 169|169} = {120|169} → sc = {60|169}. Benar.','<b>B:</b> (sin θ − cos θ)² = 1 − 2sc = 1 − {120|169} = {49|169} → |sin θ − cos θ| = {7|13}. Benar.','<b>C dan D:</b> nilainya {5|13} dan {12|13} tanpa urutan pasti. tan θ bisa {5|12} atau {12|5}; sin θ bisa {5|13} atau {12|13}. Salah (tidak harus benar).','<b>E:</b> identitas selalu berlaku. Benar.']},
+{t:'Soal 8',l:'L3 · Mengevaluasi · Benar-Salah',ty:'tf',q:'Dari puncak gedung setinggi 30 m, mobil di tanah terlihat dengan sudut depresi 30°. Andi menghitung jarak mobil dengan 30 ÷ tan 30° = 30√3 m. Beni memakai 30 × tan 30° = 10√3 m. Tentukan Benar atau Salah.',o:['Perhitungan Andi benar','Perhitungan Beni benar','Sudut elevasi dari mobil ke puncak gedung juga 30°','Jarak mobil ke puncak gedung adalah 60 m'],a:[1,0,1,1],f:'tan 30° = {30|d} → d = 30 ÷ tan 30° = 30√3. <b>Andi benar.</b>',s:['<b>(1) Benar:</b> d = 30 ÷ {√3|3} = {90|√3} = 30√3 m.','<b>(2) Salah:</b> 30 × tan 30° menukar SA dan DE. Jarak harus lebih besar dari tinggi karena sudutnya kecil.','<b>(3) Benar:</b> depresi dari atas = elevasi dari bawah (sudut dalam berseberangan).','<b>(4) Benar:</b> sin 30° = {30|jarak pandang} → jarak pandang = 30 ÷ {1|2} = 60 m.']},
+{t:'Soal 9',l:'L3 · Menyimpulkan',q:'Untuk 0° ≤ θ ≤ 360°, nilai θ yang memenuhi 2 cos θ + √3 = 0 adalah ...',o:['30° dan 330°','60° dan 300°','120° dan 240°','150° dan 210°','150° dan 330°'],a:3,f:'cos θ = −{√3|2}, referensi 30°, K-II dan K-III: <b>150° dan 210°</b>.',s:['2 cos θ = −√3 → cos θ = −{√3|2}','cos α = {√3|2} → α = 30°','cos negatif di K-II dan K-III','K-II: 180° − 30° = 150°; K-III: 180° + 30° = 210°'],j:'Jebakan: opsi E (150° dan 330°) memakai K-IV, padahal cos di K-IV positif.'}
+];
+
+/* ===== Render soal ===== */
+const L='ABCDE';
+function expl(it){return `<div class="ex"><div class="fast"><b>⚡ Cara Cepat</b><br>${M(it.f)}</div><div class="full"><b>📝 Cara Lengkap (langkah demi langkah)</b><ol>${it.s.map(x=>'<li>'+M(x)+'</li>').join('')}</ol>${it.j?'<div class="jb">'+M(it.j)+'</div>':''}</div></div>`}
+function build(list,box,pre){
+const el=document.getElementById(box);
+list.forEach((it,n)=>{
+ const d=document.createElement('div');d.className='q';
+ let h=`<h4>${it.t}<span class="lv">${it.l}</span></h4><div>${M(it.q)}</div>${it.fig?'<figure>'+it.fig+'</figure>':''}`;
+ if(it.ty==='tf'){h+=it.o.map((o,i)=>`<div class="chk"><span>(${i+1}) ${M(o)}</span><select aria-label="Pernyataan ${i+1}"><option value="">Pilih</option><option value="1">Benar</option><option value="0">Salah</option></select></div>`).join('')+'<button class="go">Periksa jawaban</button><div class="res"></div>'}
+ else if(it.ty==='m'){h+=it.o.map((o,i)=>`<label class="chk"><input type="checkbox"> <span>${L[i]}. ${M(o)}</span></label>`).join('')+'<button class="go">Periksa jawaban</button><div class="res"></div>'}
+ else h+=it.o.map((o,i)=>`<button class="opt" data-i="${i}">${L[i]}. ${M(o)}</button>`).join('')+'<div class="res"></div>';
+ d.innerHTML=h+expl(it);el.appendChild(d);
+ const ex=d.querySelector('.ex'),res=d.querySelector('.res');
+ if(!it.ty){d.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+  const k=+b.dataset.i;d.querySelectorAll('.opt').forEach((x,i)=>{x.disabled=true;if(i===it.a)x.classList.add('ok')});
+  if(k!==it.a)b.classList.add('bad');
+  res.innerHTML=k===it.a?'<span style="color:var(--ok)">✔ Benar! Lihat pembahasannya di bawah.</span>':'<span style="color:var(--no)">✘ Belum tepat. Jawaban benar: '+L[it.a]+'. Pelajari pembahasannya.</span>';ex.classList.add('on')})}
+ else d.querySelector('.go').onclick=function(){
+  const rows=d.querySelectorAll('.chk');let all=true;
+  rows.forEach((r,i)=>{let v;
+   if(it.ty==='m'){v=r.querySelector('input').checked;var want=it.a.includes(i)}
+   else{const s=r.querySelector('select').value;v=s===''?null:s==='1';want=!!it.a[i]}
+   const ok=v===want;if(!ok)all=false;r.classList.remove('ok','bad');r.classList.add(ok?'ok':'bad')});
+  res.innerHTML=all?'<span style="color:var(--ok)">✔ Semua benar!</span>':'<span style="color:var(--no)">✘ Masih ada yang keliru (kotak merah). Pelajari pembahasannya.</span>';ex.classList.add('on')};
+});}
+build(EX,'ex');build(LAT,'lat');build(TKA,'tka-list');
+document.querySelectorAll('[data-m]').forEach(e=>e.innerHTML=M(e.innerHTML));
+</script>
+</body>
+</html>
